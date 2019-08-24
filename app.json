@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "Infoboe",
+    "slug": "infoboe-mobile",
+    "privacy": "public",
+    "sdkVersion": "33.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "primaryColor": "#034ea1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#034ea1"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+
+    "ios": {
+      "bundleIdentifier": "com.infoboe.infoboe",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.infoboe.infoboe"
+    }
+  }
+}
