@@ -9,7 +9,7 @@
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "1.1.0",
     "primaryColor": "#034ea1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,13 +24,14 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-
     "ios": {
-      "bundleIdentifier": "com.infoboe.infoboe",
+      "bundleIdentifier": "com.infoboe.mobile",
       "supportsTablet": true
     },
     "android": {
-      "package": "com.infoboe.infoboe"
-    }
+      "package": "com.infoboe.mobile"
+    },
+    "description": "Search Engine App on the official Gazettes of Spain",
+    "githubUrl": "https://github.com/javidalpe/boletines-app"
   }
 }
