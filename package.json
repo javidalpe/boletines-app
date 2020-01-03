@@ -5,16 +5,18 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "lint": "prettier --write \"**/*.js\""
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.5",
+    "algoliasearch": "^3.35.1",
     "expo": "~36.0.0",
     "lodash": "^4.17.15",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
-    "react-instantsearch": "^5.7.0",
-    "react-instantsearch-native": "^5.7.0",
+    "react-instantsearch": "^6.1.0",
+    "react-instantsearch-native": "^6.1.0",
     "react-native": "0.61.4",
     "react-native-gesture-handler": "~1.5.0",
     "react-native-reanimated": "~1.4.0",
@@ -26,7 +28,8 @@
     "react-navigation-stack": "^2.0.2"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.1.1"
+    "babel-preset-expo": "^5.1.1",
+    "prettier": "1.19.1"
   },
   "private": true
 }
