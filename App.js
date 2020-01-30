@@ -1,28 +1,15 @@
-import React, { useState } from "react";
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  TouchableOpacity
-} from "react-native";
-import { InstantSearch } from "react-instantsearch/native";
-import { connectHighlight } from "react-instantsearch-native";
+import React, {useState} from "react";
+import {FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
+import {InstantSearch} from "react-instantsearch/native";
+import {connectHighlight} from "react-instantsearch-native";
 import algoliasearch from "algoliasearch/lite";
 
-import {
-  connectInfiniteHits,
-  connectSearchBox,
-  connectStats
-} from "react-instantsearch/connectors";
-import { AppLoading } from "expo";
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
+import {connectInfiniteHits, connectSearchBox, connectStats} from "react-instantsearch/connectors";
+import {AppLoading} from "expo";
+import {createAppContainer} from "react-navigation";
+import {createStackNavigator} from "react-navigation-stack";
 import Detail from "./Detail";
-
-export const INFOBOE_URL = "https://www.infoboe.com/alertas";
-export const BRAND_COLOR = "#034ea1";
+import {BRAND_COLOR, INFOBOE_URL} from "./Constants";
 
 const searchClient = algoliasearch(
   "HELCA5ISYR",
@@ -30,7 +17,7 @@ const searchClient = algoliasearch(
 );
 
 const Intro = () => (
-  <View>
+  <View style={{padding: 20}}>
     <Text style={styles.titleText}>Infoboe</Text>
     <Text style={styles.lead}>
       ¡Bienvenido a Infoboe! Utiliza la barra de abajo para buscar en los
@@ -53,7 +40,6 @@ function App({ navigation }) {
   const existSearchTerm = !!(query && query.length > 0);
   const urlAlert = INFOBOE_URL + (existSearchTerm ? `?query=${query}` : "");
   return (
-    <View>
       <View style={styles.container}>
         <InstantSearch
           indexName="chunks_pro_index"
@@ -69,7 +55,6 @@ function App({ navigation }) {
           )}
         </InstantSearch>
       </View>
-    </View>
   );
 }
 
@@ -106,13 +91,13 @@ const ConnectedSearchBox = connectSearchBox(SearchBox);
 const styleNormal = {
   backgroundColor: "transparent",
   color: "#666",
-  fontSize: 12
+  fontSize: 14
 };
 
 const styleHighlight = {
   backgroundColor: BRAND_COLOR,
   color: "white",
-  fontSize: 12
+  fontSize: 14
 };
 
 const Highlight = ({ attribute, hit, highlight }) => {
@@ -123,7 +108,7 @@ const Highlight = ({ attribute, hit, highlight }) => {
   });
 
   return (
-    <Text style={{ fontSize: 12 }}>
+    <Text>
       {highlights.slice(0, 5).map(({ value, isHighlighted }, index) => {
         const style = isHighlighted ? styleHighlight : styleNormal;
         return (
@@ -174,7 +159,7 @@ class Hits extends React.Component {
         }
       >
         <View>
-          <Text style={{ fontSize: 10 }}>
+          <Text style={{ fontSize: 14, marginBottom: 2 }}>
             {hit.item.day} - {hit.item.publication_name}
           </Text>
           <HighlightConnected attribute="content" hit={hit.item} />
@@ -197,24 +182,11 @@ class Hits extends React.Component {
 const ConnectedHits = connectInfiniteHits(Hits);
 const ConnectedStats = connectStats(props => {
   return (
-    <Text style={{ paddingLeft: 8, fontSize: 10, marginTop: 5, color: "#777" }}>
+    <Text style={{ paddingLeft: 8, fontSize: 14, marginTop: 5, color: "#777" }}>
       {props.nbHits} resultados encontrados en {props.processingTimeMS}ms
     </Text>
   );
 });
-
-const boxShadow = {
-  shadowColor: "#000",
-  shadowOffset: {
-    width: 0,
-    height: 2
-  },
-  shadowOpacity: 0.25,
-  shadowRadius: 3.84,
-
-  backgroundColor: "#fff",
-  elevation: 5
-};
 
 const styles = StyleSheet.create({
   titleText: {
@@ -236,45 +208,36 @@ const styles = StyleSheet.create({
   container: {
     height: "100%",
     width: "100%",
-    backgroundColor: "#FDFDFD",
-    paddingTop: 20,
-    paddingRight: 10,
-    paddingLeft: 10,
-    paddingBottom: 10,
+    backgroundColor: "white",
     color: "#555"
   },
   input: {
     borderWidth: 1,
-    borderColor: "#eeeeee",
+    borderColor: "#d8d8d8",
     borderRadius: 14,
     padding: 10,
     color: "#444444",
     height: 45,
-    ...boxShadow
+    backgroundColor: "white",
+    marginLeft: 20,
+    marginRight: 20,
   },
   inputSearch: {
+    borderBottomWidth: 1,
+    borderBottomColor: "#eeeeee",
     padding: 10,
     color: "#444444",
     height: 50,
     fontSize: 24,
-    ...boxShadow
+    backgroundColor: "white",
   },
   items: {
     marginTop: 10
   },
   item: {
-    borderWidth: 1,
-    borderColor: "#ddd",
+    borderBottomWidth: 1,
+    borderBottomColor: "#ddd",
     padding: 10,
-    marginTop: 10,
     backgroundColor: "white",
-    ...boxShadow
   },
-
-  callToAction: {
-    marginTop: 10,
-    borderWidth: 1,
-    borderColor: "#ddd",
-    ...boxShadow
-  }
 });

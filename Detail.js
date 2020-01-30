@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text, Button, Linking, Share } from "react-native";
 
-import { BRAND_COLOR, INFOBOE_URL } from "./App";
 import Container from "./Container";
+import {BRAND_COLOR, INFOBOE_URL} from "./Constants";
 
 const Detail = ({ navigation }) => {
   const query = navigation.getParam("query");
